@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>E-BOOK SHOP</title>
+<meta name="keywords" content="Book Store Template, Free CSS Template, CSS Website Layout, CSS, HTML" />
+<meta name="description" content="Book Store Template, Free CSS Template, Download CSS Website" />
+<link href="{% static 'templatemo_style.css' %}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<!--  Free CSS Templates from www.templatemo.com -->
+<div id="templatemo_container">
+	<div id="templatemo_menu">
+    	<ul>
+<!--            <li><a href="index.html" class="current">Home</a></li>-->
+            <li><a href="orderapp/order">Order NOW</a></li>
+            <li><a href="https://www.wikipedia.org/">Wikipedia</a></li>
+            {% if user.is_authenticated %}
+            <li>Hello {{user.username}}</li>
+            <li><a href="registerapp/logout">Logout</a></li>
+
+            {% else %}
+            <li><a href="registerapp/registeration">Register</a></li>
+            <li><a href="registerapp/login">Login</a></li>
+
+            {% endif  %}
+
+    	</ul>
+    </div> <!-- end of menu -->
+    
+    <div id="templatemo_header">
+    	<div id="templatemo_special_offers">
+        	<p>
+                <span>25%</span> discounts for
+        purchase over $80
+        	</p>
+			<a href="subpage.html" style="margin-left: 50px;">Read more...</a>
+        </div>
+        
+        
+        <div id="templatemo_new_books">
+        	<ul>
+                <li><a href="https://en.wikipedia.org/wiki/Robinson_Crusoe">Robinson crueso</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Macbeth">Macbath</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Harry_Potter">Harry porter</a></li>
+            </ul>
+            <a href="#" style="margin-left: 50px;">Read more...</a>
+        </div>
+    </div> <!-- end of header -->
+    
+    <div id="templatemo_content">
+    	
+        <div id="templatemo_content_left">
+        	<div class="templatemo_content_left_section">
+            	<h1>  Best Books For Beginners</h1>
+                <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/The_Great_Gatsby">The Great Gatsby</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye">The Catcher In the Rye</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Wings_of_Fire_(autobiography)">Wings Of Fire</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/The_Alchemist_(novel)#:~:text=Originally%20written%20in%20Portuguese%2C%20it,of%20finding%20a%20treasure%20there.">The_Alchemist</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/The_Palace_of_Illusions">The Palace Of Illusions</a></li>
+                    <li><a href="https://ml.wikipedia.org/wiki/%E0%B4%86%E0%B4%9F%E0%B5%81%E0%B4%9C%E0%B5%80%E0%B4%B5%E0%B4%BF%E0%B4%A4%E0%B4%82">Aadu Jeevitham</a></li>
+<!--                    <li><a href="#">Suspen disse</a></li>-->
+<!--                    <li><a href="#">Maece nas metus</a></li>-->
+<!--                    <li><a href="#">In sed risus ac feli</a></li>-->
+            	</ul>
+            </div>
+			<div class="templatemo_content_left_section">
+            	<h1>About Author's</h1>
+                <ul>
+                    <li><a href="https://en.wikipedia.org/wiki/Benyamin_(writer)">Benyamin</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Daniel_Defoe">Daniel Defoe</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/William_Shakespeare">William Shakespeare</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Leo_Tolstoy">Leo Tolstoy</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Ernest_Hemingway">Ernest Hemingway</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/A._P._J._Abdul_Kalam">A.P.J.Abdul Kalam</a></li>
+<!--                    <li><a href="http://www.flashmo.com" target="_parent">Flash Templates</a></li>-->
+<!--                    <li><a href="http://www.templatemo.com" target="_parent">CSS Templates</a></li>-->
+<!--                    <li><a href="http://www.webdesignmo.com" target="_parent">Web Design</a></li>-->
+<!--                    <li><a href="http://www.photovaco.com" target="_parent">Free Photos</a></li>-->
+            	</ul>
+            </div>
+            
+<!--            <div class="templatemo_content_left_section">-->
+<!--                <a href="http://validator.w3.org/check?uri=referer"><img style="border:0;width:88px;height:31px" src="http://www.w3.org/Icons/valid-xhtml10" alt="READ" width="88" height="31" vspace="8" border="0" /></a>-->
+<!--<a href="http://jigsaw.w3.org/css-validator/check/referer"><img style="border:0;width:88px;height:31px"  src="http://jigsaw.w3.org/css-validator/images/vcss-blue" alt="MORE" vspace="8" border="0" /></a>-->
+<!--			</div>-->
+        </div> <!-- end of content left -->
+
+        <div id="templatemo_content_right">
+            {% for i in result %}
+        	<div class="templatemo_product_box">
+            	<h1> {{i.name}}  <span>(by Best Author {{i.author}})</span></h1>
+   	      <img src="{{i.img.url}}" alt="image" />
+                <div class="product_info">
+                	<p>{{i.desc}}</p>
+                  <h3>${{i.price}}</h3>
+                    <div class="buy_now_button"><a href="orderapp/order">Buy Now</a></div>
+<!--                    <div class="detail_button"><a href="detailapp/detail">Detail</a></div>-->
+                </div>
+                <div class="cleaner">&nbsp;</div>
+            </div>
+            {% endfor %}
+            
+<!--            <div class="cleaner_with_width">&nbsp;</div>-->
+<!--            -->
+<!--            <div class="templatemo_product_box">-->
+<!--            	<h1>Cooking  <span>(by New Author)</span></h1>-->
+<!--       	    <img src="{% static 'images/templatemo_image_02.jpg' %}" alt="image" />-->
+<!--                <div class="product_info">-->
+<!--                	<p>Aliquam a dui, ac magna quis est eleifend dictum.</p>-->
+<!--                    <h3>$35</h3>-->
+<!--                    <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>-->
+<!--                    <div class="detail_button"><a href="subpage.html">Detail</a></div>-->
+<!--                </div>-->
+<!--                <div class="cleaner">&nbsp;</div>-->
+<!--            </div>-->
+<!--            -->
+<!--            <div class="cleaner_with_height">&nbsp;</div>-->
+<!--            -->
+<!--            <div class="templatemo_product_box">-->
+<!--            	<h1>Gardening <span>(by Famous Author)</span></h1>-->
+<!--   	      <img src="{% static 'images/templatemo_image_03.jpg' %}" alt="image" />-->
+<!--                <div class="product_info">-->
+<!--                	<p>Ut fringilla enim sed turpis. Sed justo dolor, convallis at.</p>-->
+<!--                    <h3>$65</h3>-->
+<!--                    <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>-->
+<!--                    <div class="detail_button"><a href="subpage.html">Detail</a></div>-->
+<!--                </div>-->
+<!--                <div class="cleaner">&nbsp;</div>-->
+<!--            </div>-->
+<!--            -->
+<!--            <div class="cleaner_with_width">&nbsp;</div>-->
+<!--            -->
+<!--            <div class="templatemo_product_box">-->
+<!--            	<h1>Sushi Book  <span>(by Japanese Name)</span></h1>-->
+<!--            	<img src="{% static 'images/templatemo_image_04.jpg' %}" alt="image" />-->
+<!--                <div class="product_info">-->
+<!--                	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>-->
+<!--                    <h3>$45</h3>-->
+<!--                    <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>-->
+<!--                    <div class="detail_button"><a href="subpage.html">Detail</a></div>-->
+<!--                </div>-->
+<!--                <div class="cleaner">&nbsp;</div>-->
+<!--            </div>-->
+<!--            -->
+<!--            <div class="cleaner_with_height">&nbsp;</div>-->
+            
+            <a href="subpage.html"><img src="{% static 'images/templatemo_ads.jpg' %}" alt="ads" /></a>
+        </div> <!-- end of content right -->
+    
+    	<div class="cleaner_with_height">&nbsp;</div>
+    </div> <!-- end of content -->
+    
+    <div id="templatemo_footer">
+    
+<!--	       <a href="subpage.html">Home</a> | <a href="subpage.html">Search</a> | <a href="subpage.html">Books</a> | <a href="#">New Releases</a> | <a href="#">FAQs</a> | <a href="#">Contact Us</a><br />-->
+        Copyright © 2048 <a href="#"><strong>Thank you for visiting E-book Store</strong></a> | <a href="#" target="_parent">E-Book Shop</a>   <a href="#" target="_parent" title="free css templates"></a>	</div>
+    <!-- end of footer -->
+<!--  Free CSS Template www.templatemo.com -->
+</div> <!-- end of container -->
+<div align=center> <a href='http://all-free-download.com/free-website-templates/'></a></div></body>
+</html>
